@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://blu4130gck505"]
+[gd_scene load_steps=8 format=3 uid="uid://blu4130gck505"]
 
 [ext_resource type="Texture2D" uid="uid://b3y6be58py218" path="res://objects/portal/TimePortal.png" id="1_e3qr7"]
+[ext_resource type="Script" uid="uid://ps5r044eleur" path="res://objects/portal/portal.gd" id="1_v7atq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7atq"]
 atlas = ExtResource("1_e3qr7")
@@ -38,7 +39,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="portal" type="AnimatedSprite2D"]
+[node name="portal" type="Node"]
+script = ExtResource("1_v7atq")
+
+[node name="portalImage" type="AnimatedSprite2D" parent="."]
+position = Vector2(-32, -32)
 sprite_frames = SubResource("SpriteFrames_6y8yo")
 autoplay = "default"
 offset = Vector2(16, 16)

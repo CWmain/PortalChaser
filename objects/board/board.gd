@@ -16,12 +16,15 @@ var tickCount: int = 0
 @onready var chaser: Chaser = $Chaser
 var chasers: Array[Chaser]
 
-var portalPos: Vector2 = Vector2(5,5)
+@onready var portal: Node = $portal
+
+var score = 0
 
 func _ready() -> void:
 	tick.wait_time = tickTime
 	tick.timeout.connect(_on_tick)
 	chasers.append(chaser)
+	portal.spawnPortal()
 
 func gridToReal(gridPos: Vector2) -> Vector2:
 	var realPos: Vector2
@@ -43,12 +46,16 @@ func chaserOutOfBounds() -> void:
 		endGame()
 
 func chaserOnPortal() -> void:
-	if chasers[-1].position == portalPos:
+	if chasers[-1].position == portal.position:
 		chasers[-1].unactivateChaser()
 		tickCount = 0
 		for c in chasers:
 			c.setChaserPositionToStart()
-		newChaser(Vector2(portalPos))
+		newChaser(Vector2(portal.position))
+		portal.spawnPortal()
+		stopTicks() 
+		score += 1
+		print(score)
 
 # Returns the time forr 1 tick to complete
 func get_tick_time() -> float:
@@ -59,11 +66,11 @@ func newChaser(spawnLoc: Vector2) -> void:
 	add_child(chasers[-1])
 	chasers[-1].spawnChaser(spawnLoc)	
 
-func pauseTicks() -> void:
-	tick.paused = true
+func stopTicks() -> void:
+	tick.stop()
 	
-func resumeTicks() -> void:
-	tick.paused = false
+func startTicks() -> void:
+	tick.start()
 
 func endGame():
 	print("Game is over")

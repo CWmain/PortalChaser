@@ -38,9 +38,10 @@ func _process(delta: float) -> void:
 			moveDirection = left
 		if Input.is_action_just_pressed("moveRight"):
 			moveDirection = right
+		
 		if moveDirection:
-			if board.tick.paused:
-				board.resumeTicks()
+			if board.tick.is_stopped():
+				board.startTicks()
 
 func spawnChaser(spawnLocation: Vector2) -> void:
 	killActiveTween()
