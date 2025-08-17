@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxp1v83nieslp"]
+
+[ext_resource type="Script" uid="uid://bc7igfbq8ei86" path="res://objects/chaser/chaser.gd" id="1_j0gsq"]
+[ext_resource type="Texture2D" uid="uid://dw681aav47rph" path="res://objects/chaser/realChaser.png" id="2_hr602"]
+[ext_resource type="Texture2D" uid="uid://dyh2f28q21hp8" path="res://objects/chaser/visualChaser.png" id="3_dy2e0"]
+
+[node name="Chaser" type="Node"]
+script = ExtResource("1_j0gsq")
+tweenTime = 0.2
+
+[node name="RealPosition" type="Sprite2D" parent="."]
+texture = ExtResource("2_hr602")
+
+[node name="VisualPosition" type="Sprite2D" parent="."]
+texture = ExtResource("3_dy2e0")

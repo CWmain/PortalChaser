@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4oohskd2fgc"]
+
+[ext_resource type="Script" uid="uid://bgo3e23fsexkc" path="res://objects/board/board.gd" id="1_hj15u"]
+[ext_resource type="Texture2D" uid="uid://ch2wql1q1pf1o" path="res://objects/board/background.png" id="1_wedsa"]
+[ext_resource type="PackedScene" uid="uid://bxp1v83nieslp" path="res://objects/chaser/chaser.tscn" id="3_v5vot"]
+
+[node name="Board" type="CanvasLayer"]
+script = ExtResource("1_hj15u")
+tickTime = 0.3
+
+[node name="grid" type="Sprite2D" parent="."]
+texture = ExtResource("1_wedsa")
+offset = Vector2(320, 320)
+
+[node name="Chaser" parent="." instance=ExtResource("3_v5vot")]
+
+[node name="Tick" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
