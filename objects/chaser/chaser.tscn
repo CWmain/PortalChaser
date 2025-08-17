@@ -9,7 +9,9 @@ script = ExtResource("1_j0gsq")
 tweenTime = 0.2
 
 [node name="RealPosition" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
 texture = ExtResource("2_hr602")
 
 [node name="VisualPosition" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
 texture = ExtResource("3_dy2e0")

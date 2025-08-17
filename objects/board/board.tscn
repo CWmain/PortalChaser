@@ -7,6 +7,7 @@
 [node name="Board" type="CanvasLayer"]
 script = ExtResource("1_hj15u")
 tickTime = 0.3
+chaserScene = ExtResource("3_v5vot")
 
 [node name="grid" type="Sprite2D" parent="."]
 texture = ExtResource("1_wedsa")
