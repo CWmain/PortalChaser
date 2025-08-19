@@ -11,6 +11,6 @@ func _ready() -> void:
 
 # Randomly place the portal
 func spawnPortal() -> void:
-	position = Vector2(randi_range(0,board.cellCount-1), randi_range(0,board.cellCount-1))
+	position = board.getNewPortalLocation()
 	portal_image.position = board.gridToReal(position)
 	

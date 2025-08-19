@@ -17,14 +17,30 @@ var tickCount: int = 0
 var chasers: Array[Chaser]
 
 @onready var portal: Node = $portal
-
+var possiblePortalLocations: Array[Vector2]
 var score = 0
 
 func _ready() -> void:
 	tick.wait_time = tickTime
 	tick.timeout.connect(_on_tick)
+	
+	# Generate an array containing all possible portal locations
+	for i in range(0, cellCount-1):
+		for j in range(0, cellCount-1):
+			possiblePortalLocations.append(Vector2(i,j))
+			
 	chasers.append(chaser)
 	portal.spawnPortal()
+
+# From the list of all possible spawn locations, use one and remove it from the list
+func getNewPortalLocation() -> Vector2:
+	# End the game if all locations have been used
+	if possiblePortalLocations.size() == 0:
+		endGame()
+	var index = randi_range(0, possiblePortalLocations.size()-1)
+	var newLoc = possiblePortalLocations[index]
+	possiblePortalLocations.remove_at(index)
+	return newLoc
 
 func gridToReal(gridPos: Vector2) -> Vector2:
 	var realPos: Vector2
